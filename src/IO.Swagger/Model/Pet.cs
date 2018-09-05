@@ -74,10 +74,11 @@ namespace IO.Swagger.Model
         /// <param name="Id">Id.</param>
         /// <param name="Category">Category.</param>
         /// <param name="Name">Name (required).</param>
+        /// <param name="Surname">Surname.</param>
         /// <param name="PhotoUrls">PhotoUrls (required).</param>
         /// <param name="Tags">Tags.</param>
         /// <param name="Status">pet status in the store.</param>
-        public Pet(long? Id = default(long?), Category Category = default(Category), string Name = default(string), List<string> PhotoUrls = default(List<string>), List<Tag> Tags = default(List<Tag>), StatusEnum? Status = default(StatusEnum?))
+        public Pet(long? Id = default(long?), Category Category = default(Category), string Name = default(string), string Surname = default(string), List<string> PhotoUrls = default(List<string>), List<Tag> Tags = default(List<Tag>), StatusEnum? Status = default(StatusEnum?))
         {
             // to ensure "Name" is required (not null)
             if (Name == null)
@@ -99,6 +100,7 @@ namespace IO.Swagger.Model
             }
             this.Id = Id;
             this.Category = Category;
+            this.Surname = Surname;
             this.Tags = Tags;
             this.Status = Status;
         }
@@ -120,6 +122,12 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Surname
+        /// </summary>
+        [DataMember(Name="surname", EmitDefaultValue=false)]
+        public string Surname { get; set; }
 
         /// <summary>
         /// Gets or Sets PhotoUrls
@@ -145,6 +153,7 @@ namespace IO.Swagger.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Surname: ").Append(Surname).Append("\n");
             sb.Append("  PhotoUrls: ").Append(PhotoUrls).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -198,6 +207,11 @@ namespace IO.Swagger.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Surname == input.Surname ||
+                    (this.Surname != null &&
+                    this.Surname.Equals(input.Surname))
+                ) && 
+                (
                     this.PhotoUrls == input.PhotoUrls ||
                     this.PhotoUrls != null &&
                     this.PhotoUrls.SequenceEqual(input.PhotoUrls)
@@ -229,6 +243,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Category.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Surname != null)
+                    hashCode = hashCode * 59 + this.Surname.GetHashCode();
                 if (this.PhotoUrls != null)
                     hashCode = hashCode * 59 + this.PhotoUrls.GetHashCode();
                 if (this.Tags != null)
